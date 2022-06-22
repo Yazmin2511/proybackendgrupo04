@@ -5,6 +5,7 @@ var app = express();
 
 app.use(express.json());
 app.use(cors({origin: 'http://localhost:4200'}));
+app.use('/api/usuario', require('./routes/usuario.route'));//para el login
 
 
 app.set('port', process.env.PORT || 3000);
