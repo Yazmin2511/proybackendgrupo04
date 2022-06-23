@@ -2,7 +2,7 @@ const Reunion = require('../models/reunion');
 const reunionCtrl = {}
 
 reunionCtrl.createReunion = async (req,res) => {
-    var reunion = new Reunion(req,body);
+    var reunion = new Reunion(req.body);
     try{
         await reunion.save();
         res.json({
@@ -18,7 +18,7 @@ reunionCtrl.createReunion = async (req,res) => {
 }
 
 reunionCtrl.getReuniones = async (req,res) => {
-    const reuniones = await Reunion.find().populate('reunion').exec();
+    const reuniones = await Reunion.find().populate('recursos','participantes').exec();
     res.json(reuniones);
 }
 
@@ -52,6 +52,12 @@ reunionCtrl.editReunion = async (req,res) => {
         })
     }
 }
+
+reunionCtrl.getReunionId = async (req,res) => {
+    const reunion = await Reunion.findById(req.params.id).populate('recursos','participantes').exec();
+    res.json(reunion)
+}
+
 
 // get reunion x != participante
 
