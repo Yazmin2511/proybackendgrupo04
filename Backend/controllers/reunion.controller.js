@@ -60,30 +60,22 @@ reunionCtrl.getReunionId = async (req,res) => {
 }
 
 reunionCtrl.getReunionParticipante = async (req,res) => {
-/*
-    const criteria = {
-        participante: '62b4ed481bd189c8b723bb1e'
-    }
-  var participantes;
-    const reuniones = await Reunion.find().populate("participantes").exec();
-    reuniones.forEach(element => {
-        participantes = element.participantes.findById();
-    });
-
-    res.json(participantes);*/
+    //Cambiar para que funcione con criteria
+    const reuniones = await Reunion.find(req.params).populate("participantes").exec();
+    res.json(reuniones);
 }
 
-// get reunion x != participante
+// get reunion x !participante
+reunionCtrl.getReunionNoParticipante = async (req,res) => {
+    //Cambiar para que funcione con criteria
+    const reunion = await Reunion.find(); 
+    /* console.log(reunion.filter((p) =>  p.participantes != req.params.participantes  )); */
+    res.json(reunion.filter((p) =>  p.participantes != req.params.participantes  ));
+}
 
-// reunion por dia , mes o
 
 reunionCtrl.getReunionPorDiaMes = async (req,res) => {
-/*
-    const criteria = {
-        'dia': '1',
-        'mes': '6',
-    }
-*/
+    //Cambiar para que funcione con criteria
     const reunion = await Reunion.find(req.params);
     res.json(reunion)
 }
