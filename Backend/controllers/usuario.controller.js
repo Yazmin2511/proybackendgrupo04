@@ -48,5 +48,9 @@ usuarioCtrl.loginUsuario = async (req, res)=>{
    })
 }
 
+usuarioCtrl.getUsuarios = async (req, res) =>{
+    var usuarios = await Usuario.find();
+    res.json(usuarios);
+}
 //exportacion del modulo controlador
 module.exports= usuarioCtrl;
