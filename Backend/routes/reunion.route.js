@@ -11,5 +11,7 @@ router.get('/:id', reunionCtrl.getReunionId);
 router.get('/participante/:participantes', reunionCtrl.getReunionParticipante);
 router.get('/noparticipante/:participantes', reunionCtrl.getReunionNoParticipante);
 router.get('/fecha/:dia/:mes', reunionCtrl.getReunionPorDiaMes);
+router.get('/oficina/:nroOficina', reunionCtrl.getReunionOficina);
+
 
 module.exports = router;

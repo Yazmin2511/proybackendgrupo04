@@ -80,6 +80,13 @@ reunionCtrl.getReunionPorDiaMes = async (req,res) => {
     res.json(reunion)
 }
 
+//busqueda por oficina
+reunionCtrl.getReunionOficina = async (req,res) => {
+    //Cambiar para que funcione con criteria
+    const reunion = await Reunion.find(req.params);
+    res.json(reunion)
+}
+
 
 
 module.exports = reunionCtrl;
