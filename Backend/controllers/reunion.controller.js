@@ -28,7 +28,7 @@ reunionCtrl.deleteReunion  = async (req,res) => {
         await Reunion.deleteOne({_id: req.params.id});
         res.json({
             'status':'1',
-            'msg':'Pasaje deleted.'
+            'msg':'Pasaje deleted.' 
         })
     }catch(error){
         res.status(400).json({
@@ -60,31 +60,39 @@ reunionCtrl.getReunionId = async (req,res) => {
 }
 
 reunionCtrl.getReunionParticipante = async (req,res) => {
-    //Cambiar para que funcione con criteria
     const reuniones = await Reunion.find(req.params).populate("participantes").exec();
     res.json(reuniones);
 }
 
 // get reunion x !participante
 reunionCtrl.getReunionNoParticipante = async (req,res) => {
-    //Cambiar para que funcione con criteria
-    const reunion = await Reunion.find(); 
+    const reunion = await Reunion.find();//.populate('participantes').exec(); 
     /* console.log(reunion.filter((p) =>  p.participantes != req.params.participantes  )); */
-    res.json(reunion.filter((p) =>  p.participantes != req.params.participantes  ));
+    //const reuniones = reunion.filter((p) =>  p.participantes != req.params.participantes  );
+
+    res.json(reunion.filter((p) =>  p.participantes != req.params.participantes  ));    
 }
 
 
 reunionCtrl.getReunionPorDiaMes = async (req,res) => {
-    //Cambiar para que funcione con criteria
-    const reunion = await Reunion.find(req.params);
+    var criteria={};
+    if(req.query.dia!=null && req.query.dia!=""){
+      criteria.dia = { $regex: req.query.dia, $options: "i" }};
+    if(req.query.mes!=null && req.query.mes!=""){
+      criteria.mes = { $regex: req.query.mes, $options: "i" }};
+    const reunion = await Reunion.find(criteria);
     res.json(reunion)
 }
 
 //busqueda por oficina
 reunionCtrl.getReunionOficina = async (req,res) => {
     //Cambiar para que funcione con criteria
-    const reunion = await Reunion.find(req.params);
-    res.json(reunion)
+    var criteria={};
+    if(req.query.nroOficina!=null && req.query.nroOficina!=""){
+      criteria.nroOficina = { $regex: req.query.nroOficina, $options: "i" }
+    };
+    const reunion = await Reunion.find(criteria);
+    res.json(reunion);
 }
 
 
