@@ -28,7 +28,7 @@ reunionCtrl.deleteReunion  = async (req,res) => {
         await Reunion.deleteOne({_id: req.params.id});
         res.json({
             'status':'1',
-            'msg':'Pasaje deleted.'
+            'msg':'Pasaje deleted.' 
         })
     }catch(error){
         res.status(400).json({
@@ -60,23 +60,17 @@ reunionCtrl.getReunionId = async (req,res) => {
 }
 
 reunionCtrl.getReunionParticipante = async (req,res) => {
-    var criteria={};
-    if(req.query.participantes!=null && req.query.participantes!=""){
-      criteria.participantes = { $regex: req.query.participantes, $options: "i" }
-    };
-    const reuniones = await Reunion.find(criteria).populate("participantes").exec();
+    const reuniones = await Reunion.find(req.params).populate("participantes").exec();
     res.json(reuniones);
 }
 
 // get reunion x !participante
 reunionCtrl.getReunionNoParticipante = async (req,res) => {
-    var criteria={};
-    if(req.query.participantes!=null && req.query.participantes!=""){
-      criteria.participantes = { $regex: req.query.participantes, $options: "i" }
-    };
-    const reunion = await Reunion.find(criteria); 
+    const reunion = await Reunion.find();//.populate('participantes').exec(); 
     /* console.log(reunion.filter((p) =>  p.participantes != req.params.participantes  )); */
-    res.json(reunion.filter((p) =>  p.participantes != req.params.participantes  ));
+    //const reuniones = reunion.filter((p) =>  p.participantes != req.params.participantes  );
+
+    res.json(reunion.filter((p) =>  p.participantes != req.params.participantes  ));    
 }
 
 
