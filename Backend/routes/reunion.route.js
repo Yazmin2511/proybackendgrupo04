@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post('/', reunionCtrl.createReunion);
 router.get('/', reunionCtrl.getReuniones);
-router.delete('/', reunionCtrl.deleteReunion);
+router.delete('/:id', reunionCtrl.deleteReunion);
 router.put('/:id', reunionCtrl.editReunion);
 router.get('/:id', reunionCtrl.getReunionId);
 router.get('/participante/:participantes', reunionCtrl.getReunionParticipante);
