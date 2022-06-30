@@ -6,8 +6,8 @@ const router = express.Router();
 //definimos las rutas para la gestion de agente
 router.get('/', empleadoCtrl.getEmpleados);
 router.post('/', empleadoCtrl.createEmpleado);
-//router.get('/:id', agenteCtrl.getAgente);
-//router.put('/:id', agenteCtrl.editAgente);
-//router.delete('/:id', agenteCtrl.deleteAgente);
+router.get('/:id', empleadoCtrl.getEmpleado);
+router.put('/:id', empleadoCtrl.editEmpleado);
+router.delete('/:id', empleadoCtrl.deleteEmpleado);
 //exportamos el modulo de rutas
 module.exports = router;

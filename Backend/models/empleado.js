@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 const Usuario = require ('./usuario');
 const EmpleadoSchema = new Schema({
-    user: {type: Schema.Types.ObjectId, ref: Usuario, required: true},
+    //user: {type: Schema.Types.ObjectId, ref: Usuario, required: true}, //luego lo bindeo con user
     apellido: {type: String, required: true},
     nombre: {type:String, required: true},
     legajo: {type: String, required: true},
