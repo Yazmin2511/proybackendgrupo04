@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-const {Schema} = mongoose;
 const Usuario = require ('./usuario');
+const {Schema} = mongoose;
 const EmpleadoSchema = new Schema({
     apellido: {type: String, required: true},
     nombre: {type:String, required: true},

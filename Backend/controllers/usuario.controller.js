@@ -1,4 +1,7 @@
 const Usuario = require ('./../models/usuario')
+//implemento del  manejador del token
+const jwt = require('jsonwebtoken');
+
 const usuarioCtrl = {}
 //empleadossss
 usuarioCtrl.getUsuarios = async (req, res) => {
@@ -47,16 +50,24 @@ usuarioCtrl.loginUsuario = async (req, res)=>{
                 status: 0,
                 msg: "not found" })
         } else {
+            //preparo un token para ser enviado en caso de loguin correcto
+            const unToken = jwt.sign({id: user._id}, "secretkey");
         res.json({
             status: 1,
             msg: "success",
             username: user.username, //retorno información útil para el frontend
             perfil: user.perfil, //retorno información útil para el frontend
             userid: user._id, //retorno información útil para el frontend
+            token: unToken
+
         })//)
     };//};
    })
 }
 
+usuarioCtrl.getUsuarios = async (req, res) =>{
+    var usuarios = await Usuario.find();
+    res.json(usuarios);
+}
 //exportacion del modulo controlador
 module.exports= usuarioCtrl;
