@@ -10,7 +10,7 @@ const ReunionSchema= new Schema({
      horaComienzo: { type: String, required: true },
      horaFinal: { type: String, required: true },
      participantes: [{ type: Schema.ObjectId , ref:'Empleado' }],
-//     recursos:[{type: Schema.ObjectId, ref:'Recurso'}],
+     recursos:[{type: Schema.ObjectId, ref:'Recurso'}],
      nroOficina: { type: String, required: true },
      tipoReunion: { type: String, required: true },
      temaReunion: { type: String, required: true },
