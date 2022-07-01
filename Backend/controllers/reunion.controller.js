@@ -19,7 +19,7 @@ reunionCtrl.createReunion = async (req,res) => {
 }
 
 reunionCtrl.getReuniones = async (req,res) => {
-    const reuniones = await Reunion.find().populate("participantes").exec();
+    const reuniones = await Reunion.find().populate("participantes").populate("recursos").exec();
     res.json(reuniones);
 }
 
@@ -55,12 +55,12 @@ reunionCtrl.editReunion = async (req,res) => {
 }
 
 reunionCtrl.getReunionId = async (req,res) => {
-    const reunion = await Reunion.findById(req.params.id).populate('participantes').exec();
+    const reunion = await Reunion.findById(req.params.id).populate('participantes').populate("recursos").exec();
     res.json(reunion)
 }
 
 reunionCtrl.getReunionParticipante = async (req,res) => {
-    const reuniones = await Reunion.find(req.params).populate("participantes").exec();
+    const reuniones = await Reunion.find(req.params).populate("participantes").populate("recursos").exec();
     res.json(reuniones);
 }
 
