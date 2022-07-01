@@ -8,4 +8,4 @@ apellido: {type:String, required:true}, // opcional: puede almacenarse en otra c
 perfil: {type:String, required: true} //administrador - visitante - administrativo
 });
 //exporto objeto para que pueda ser usado en otros lugares
-module.exports = mongoose.model('Usuario', UsuarioSchema);
+module.exports = mongoose.model('Usuario', UsuarioSchema); 

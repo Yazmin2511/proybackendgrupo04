@@ -1,11 +1,11 @@
 const Empleado = require('../models/empleado');
 const empleadoCtrl = {}
 empleadoCtrl.getEmpleados = async (req, res) => {
-    var empleados = await Empleado.find();
+    var empleados = await Empleado.find().populate("user");
     res.json(empleados);
 }
 empleadoCtrl.getEmpleado = async (req, res) => {
-    const empleado = await Empleado.findById(req.params.id);
+    const empleado = await Empleado.findById(req.params.id).populate("user");
     res.json(empleado);
 }
 empleadoCtrl.createEmpleado = async (req, res) => {

@@ -1,6 +1,14 @@
 const Usuario = require ('./../models/usuario')
 const usuarioCtrl = {}
-
+//empleadossss
+usuarioCtrl.getUsuarios = async (req, res) => {
+    var usuarios = await Usuario.find();
+    res.json(usuarios);
+}
+usuarioCtrl.getUsuario = async (req, res) => {
+    const usuario = await Usuario.findById(req.params.id);
+    res.json(usuario);
+}
 usuarioCtrl.createUsuario = async (req, res)=>{
     //en req.body se espera que vengan los datos de usuario a crear
     const usuario = new Usuario (req.body);
@@ -16,7 +24,9 @@ usuarioCtrl.createUsuario = async (req, res)=>{
         'msg': 'Error procesando operacion.'
         })
         }
-   }
+}
+
+
 usuarioCtrl.loginUsuario = async (req, res)=>{
     //en req.body se espera que vengan las credenciales de login
     //defino los criterios de busqueda en base al username y password recibidos

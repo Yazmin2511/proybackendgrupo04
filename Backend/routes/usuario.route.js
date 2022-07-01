@@ -5,5 +5,8 @@ const usuarioCtrl = require('./../controllers/usuario.controller');
 // definiendo rutas
 router.post('/', usuarioCtrl.createUsuario);
 router.post('/login', usuarioCtrl.loginUsuario);
+//para empleados
+router.get('/', usuarioCtrl.getUsuarios);
+router.get('/:id', usuarioCtrl.getUsuario);
 //exportacion del modulo de rutas
 module.exports = router;
