@@ -8,6 +8,7 @@ app.use(cors({origin: 'http://localhost:4200'}));
 app.use('/api/usuario', require('./routes/usuario.route'));//para el login
 app.use('/api/empleado', require('./routes/empleado.route.js'));//para la lista de empleados
 app.use('/api/reunion', require('./routes/reunion.route.js')); // reuniona
+app.use('/api/recurso', require('./routes/recurso.route.js')); // recurso
 app.set('port', process.env.PORT || 3000);
 
 
