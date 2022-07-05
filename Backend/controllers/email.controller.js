@@ -15,7 +15,7 @@ emailCtrl.enviarEmail = async (req = request, res = response) => {
   });
 
   let info = {
-    frm: "grupo4pysw2022@gmail.com",
+    from: "grupo4pysw2022@gmail.com",
     to: body.destinatarios, //correo o lista de correos ej: "correo1@c.com, correo2@c.com, correo3@c.com"
     subject: body.asunto, //asuto del mail
     html: body.mensaje, //mensaje en formato html
