@@ -16,6 +16,7 @@ router.get('/participante/participantes/:legajo', reunionCtrl.getReunionLegajoEm
 router.get('/noparticipante/:participantes', reunionCtrl.getReunionNoParticipante);
 router.get('/oficina/nroOficina/', reunionCtrl.getReunionOficina);
 router.get('/dias/dia/', reunionCtrl.getReunionDias);
+router.get('/participantes/legajo/:legajo', reunionCtrl.getReunionLegajoEmpledo);
 //,autCtrl.verifyToken
 
 //exportamos el modulo de rutas

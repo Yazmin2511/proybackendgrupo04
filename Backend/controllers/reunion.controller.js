@@ -79,7 +79,7 @@ reunionCtrl.getReunionOficina = async (req,res) => {
     if(req.query.nroOficina!=null && req.query.nroOficina!=""){
       criteria.nroOficina = { $regex: req.query.nroOficina, $options: "i" };
     }
-    const reunion = await Reunion.find(criteria);
+    const reunion = await Reunion.find(criteria).populate("participantes").populate("recursos").exec();
     res.json(reunion);
 }
 //busqueda por fecha
@@ -92,12 +92,12 @@ reunionCtrl.getReunionDias = async (req,res) => {
     if(req.query.mes!=null && req.query.mes!=""){
         criteria.mes = { $regex: req.query.mes, $options: "i" }
       };
-    const reunion = await Reunion.find(criteria);
+    const reunion = await Reunion.find(criteria).populate("participantes").populate("recursos").exec();
     res.json(reunion);
 }
 
 reunionCtrl.getReunionLegajoEmpledo = async (req,res) => {
-    const reuniones = await Reunion.find(req.params).populate("participantes").populate("recursos").exec();
-    res.json(reuniones);
+    const reunion = await Reunion.find(req.params).populate("participantes").populate("recursos").exec();
+    res.json(reunion); 
 }
 module.exports = reunionCtrl;
