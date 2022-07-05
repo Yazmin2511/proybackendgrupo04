@@ -19,7 +19,7 @@ emailCtrl.enviarEmail = async (req = request, res = response) => {
     to: body.destinatarios, //array de destinatarios
     subject: body.asunto, //asuto del mail
     html: body.mensaje, //mensaje en formato html
-    attachments: [], //para adjuntar archivos
+    attachments: body.adjunto, //para adjuntar archivos
   };
 
   transpot.sendMail(info, function (error, result) {
