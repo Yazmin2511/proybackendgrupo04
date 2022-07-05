@@ -8,14 +8,15 @@ const router = express.Router();
 
 router.post('/',reunionCtrl.createReunion);
 router.get('/', reunionCtrl.getReuniones);
-router.delete('/:id',autCtrl.verifyToken, reunionCtrl.deleteReunion);
+router.delete('/:id', reunionCtrl.deleteReunion);
 router.put('/:id', reunionCtrl.editReunion);
 router.get('/:id', reunionCtrl.getReunionId);
-router.get('/participante/:participantes',autCtrl.verifyToken, reunionCtrl.getReunionParticipante);
-router.get('/noparticipante/:participantes',autCtrl.verifyToken, reunionCtrl.getReunionNoParticipante);
-router.get('/fecha',autCtrl.verifyToken, reunionCtrl.getReunionPorDiaMes);
-router.get('/oficina/nroOficina/',autCtrl.verifyToken, reunionCtrl.getReunionOficina);
-
+router.get('/participante/:participantes', reunionCtrl.getReunionParticipante);
+router.get('/participante/participantes/:legajo', reunionCtrl.getReunionLegajoEmpledo);
+router.get('/noparticipante/:participantes', reunionCtrl.getReunionNoParticipante);
+router.get('/oficina/nroOficina/', reunionCtrl.getReunionOficina);
+router.get('/dias/dia/', reunionCtrl.getReunionDias);
+//,autCtrl.verifyToken
 
 //exportamos el modulo de rutas
 module.exports = router;
