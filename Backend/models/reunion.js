@@ -4,6 +4,7 @@ const Empleado = require('../models/empleado');
 const Recurso = require('./recurso');
 
 const ReunionSchema= new Schema({
+     fechaCompleta:{ type: Date, required: true },
      dia:{ type: String, required: true },
      mes:{ type: String, required: true },
      anio:{ type: String, required: true },
