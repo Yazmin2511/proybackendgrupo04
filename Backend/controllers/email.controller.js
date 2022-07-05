@@ -4,7 +4,7 @@ const { request, response } = require("express");
 const nodemailer = require("nodemailer");
 
 emailCtrl.enviarEmail = async (req = request, res = response) => {
-  let boby = req.boby;
+  let body = req.body;
   let transpot = nodemailer.createTransport({
     host: "smtp.mailtrap.io", //servidor para realizar las pruebas. Se crea una cuenta en https://mailtrap.io/
     post: 2525,
@@ -16,10 +16,24 @@ emailCtrl.enviarEmail = async (req = request, res = response) => {
 
   let info = {
     frm: "grupo4pysw2022@gmail.com",
-    to: body.destinatarios, //array de destinatarios
+    to: body.destinatarios, //correo o lista de correos ej: "correo1@c.com, correo2@c.com, correo3@c.com"
     subject: body.asunto, //asuto del mail
     html: body.mensaje, //mensaje en formato html
-    attachments: body.adjunto, //para adjuntar archivos
+    attachments: body.adjunto, //para adjuntar archivos en un array
+    /**
+     * 
+    [
+    {
+    filename: 'name',
+    patch: 'ruta del archivo'
+    },
+    {
+    filename: 'name',
+    patch: 'ruta del archivo'
+    }
+    ]
+     * 
+     */
   };
 
   transpot.sendMail(info, function (error, result) {
