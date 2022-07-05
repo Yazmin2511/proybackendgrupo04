@@ -97,7 +97,7 @@ reunionCtrl.getReunionDias = async (req,res) => {
 }
 
 reunionCtrl.getReunionLegajoEmpledo = async (req,res) => {
-    const reuniones = await Reunion.find(req.params).populate("participantes").populate("recursos").exec();
-    res.json(reuniones);
+    const reunion = await Reunion.find(req.params).populate("participantes").populate("recursos").exec();
+    res.json(reunion); 
 }
 module.exports = reunionCtrl;
