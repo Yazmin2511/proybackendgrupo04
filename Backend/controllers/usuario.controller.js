@@ -60,8 +60,8 @@ usuarioCtrl.loginUsuario = async (req, res)=>{
             userid: user._id, //retorno información útil para el frontend
             token: unToken
 
-        })//)
-    };//};
+        });//)
+    }//};
    })
 }
 
