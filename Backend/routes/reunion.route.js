@@ -1,4 +1,7 @@
 
+
+//exportamos el modulo de rutas
+
 const reunionCtrl= require('./../controllers/reunion.controller');
 
 const autCtrl = require('./../controllers/auth.controller');
@@ -13,32 +16,11 @@ router.delete('/:id',autCtrl.verifyToken, reunionCtrl.deleteReunion);
 router.put('/:id',autCtrl.verifyToken, reunionCtrl.editReunion);
 router.get('/:id',autCtrl.verifyToken, reunionCtrl.getReunionId);
 router.get('/participante/:participantes',autCtrl.verifyToken, reunionCtrl.getReunionParticipante);
+router.get('/participante/participantes/:legajo',autCtrl.verifyToken, reunionCtrl.getReunionLegajoEmpledo);
 router.get('/noparticipante/:participantes',autCtrl.verifyToken, reunionCtrl.getReunionNoParticipante);
-router.get('/fecha',autCtrl.verifyToken, reunionCtrl.getReunionPorDiaMes);
 router.get('/oficina/nroOficina/',autCtrl.verifyToken, reunionCtrl.getReunionOficina);
-
-
-//exportamos el modulo de rutas
-
-const reunionCtrl= require('./../controllers/reunion.controller');
-
-const autCtrl = require('./../controllers/auth.controller');
-
-const express = require('express');
-const router = express.Router();
-//definimos las rutas para la gestion de reuniones
-
-router.post('/',reunionCtrl.createReunion);
-router.get('/', reunionCtrl.getReuniones);
-router.delete('/:id', reunionCtrl.deleteReunion);
-router.put('/:id', reunionCtrl.editReunion);
-router.get('/:id', reunionCtrl.getReunionId);
-router.get('/participante/:participantes', reunionCtrl.getReunionParticipante);
-router.get('/participante/participantes/:legajo', reunionCtrl.getReunionLegajoEmpledo);
-router.get('/noparticipante/:participantes', reunionCtrl.getReunionNoParticipante);
-router.get('/oficina/nroOficina/', reunionCtrl.getReunionOficina);
-router.get('/dias/dia/', reunionCtrl.getReunionDias);
-router.get('/participantes/legajo/:legajo', reunionCtrl.getReunionLegajoEmpledo);
+router.get('/dias/dia/',autCtrl.verifyToken, reunionCtrl.getReunionDias);
+router.get('/participantes/legajo/:legajo',autCtrl.verifyToken, reunionCtrl.getReunionLegajoEmpledo);
 //,autCtrl.verifyToken
 
 //exportamos el modulo de rutas
