@@ -21,6 +21,15 @@ router.get('/noparticipante/:participantes',autCtrl.verifyToken, reunionCtrl.get
 router.get('/oficina/nroOficina/',autCtrl.verifyToken, reunionCtrl.getReunionOficina);
 router.get('/dias/dia/',autCtrl.verifyToken, reunionCtrl.getReunionDias);
 router.get('/participantes/legajo/:legajo',autCtrl.verifyToken, reunionCtrl.getReunionLegajoEmpledo);
+
+
+//rutas requeridas para estadisticas
+router.get("/tipo/tipo/:tipoReunion", reunionCtrl.getReunionesTipo);
+router.get("/filtro/participante/mes/anio/",reunionCtrl.getReunionesPersonasFiltros);
+router.get("/filtro/oficina/mes/anio/", reunionCtrl.getReunionesOficinaFiltros);
+router.get("/filtro/tipo/mes/anio/", reunionCtrl.getReunionesTipoFiltros);
+
+
 //,autCtrl.verifyToken
 
 //exportamos el modulo de rutas
