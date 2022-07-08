@@ -147,7 +147,10 @@ reunionCtrl.getReunionesTipoFiltros = async (req, res) => {
 
 
 
-
+reunionCtrl.getReunionesS = async (req,res) => {
+    const reuniones = await Reunion.find().populate("participantes").populate("recursos").exec();
+    res.json(reuniones);
+}
 
 
 

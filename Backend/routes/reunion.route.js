@@ -22,12 +22,17 @@ router.get('/oficina/nroOficina/',autCtrl.verifyToken, reunionCtrl.getReunionOfi
 router.get('/dias/dia/',autCtrl.verifyToken, reunionCtrl.getReunionDias);
 router.get('/participantes/legajo/:legajo',autCtrl.verifyToken, reunionCtrl.getReunionLegajoEmpledo);
 
+router.get('/r', reunionCtrl.getReunionesS);
+
+
+
 
 //rutas requeridas para estadisticas
-router.get("/tipo/tipo/:tipoReunion", reunionCtrl.getReunionesTipo);
-router.get("/filtro/participante/mes/anio/",reunionCtrl.getReunionesPersonasFiltros);
-router.get("/filtro/oficina/mes/anio/", reunionCtrl.getReunionesOficinaFiltros);
-router.get("/filtro/tipo/mes/anio/", reunionCtrl.getReunionesTipoFiltros);
+router.get("/tipo/tipo/:tipoReunion",autCtrl.verifyToken, reunionCtrl.getReunionesTipo);
+router.get("/filtro/participante/mes/anio/",autCtrl.verifyToken,reunionCtrl.getReunionesPersonasFiltros);
+router.get("/filtro/oficina/mes/anio/",autCtrl.verifyToken, reunionCtrl.getReunionesOficinaFiltros);
+router.get("/filtro/tipo/mes/anio/",autCtrl.verifyToken, reunionCtrl.getReunionesTipoFiltros);
+
 
 
 //,autCtrl.verifyToken
