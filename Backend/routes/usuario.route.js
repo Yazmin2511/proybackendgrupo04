@@ -6,7 +6,7 @@ const autCtrl = require('./../controllers/auth.controller');
 // definiendo rutas
 router.get('/', usuarioCtrl.getUsuarios);
 router.post('/', usuarioCtrl.createUsuario);
-router.post('/login', usuarioCtrl.loginUsuario);
+router.post('/login',usuarioCtrl.loginUsuario);
 //para empleados
 router.get('/', usuarioCtrl.getUsuarios);
 router.get('/:id', usuarioCtrl.getUsuario);
