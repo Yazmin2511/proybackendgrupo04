@@ -22,7 +22,7 @@ router.get('/oficina/nroOficina/',autCtrl.verifyToken, reunionCtrl.getReunionOfi
 router.get('/dias/dia/',autCtrl.verifyToken, reunionCtrl.getReunionDias);
 router.get('/participantes/legajo/:legajo',autCtrl.verifyToken, reunionCtrl.getReunionLegajoEmpledo);
 
-router.get('/r', reunionCtrl.getReunionesS);
+
 
 
 
