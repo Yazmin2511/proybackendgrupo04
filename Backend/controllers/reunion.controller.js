@@ -100,4 +100,56 @@ reunionCtrl.getReunionLegajoEmpledo = async (req,res) => {
     const reunion = await Reunion.find(req.params).populate("participantes").populate("recursos").exec();
     res.json(reunion); 
 }
+
+
+
+
+
+
+///requerido para estadisticas
+//recupera todas las reuniones de un tipo (Informativa,Formativa, etc) recibe un parametro
+reunionCtrl.getReunionesTipo = async (req, res) => {
+  let tipo = req.params.tipoReunion;
+  const reuniones = await Reunion.find({ tipoReunion: tipo });
+  res.json(reuniones);
+};
+
+//recupera reuniones a las que fue/es invitado un empleado en determinado mes y año. recibe tres parametros
+reunionCtrl.getReunionesPersonasFiltros = async (req, res) => {
+  let p = req.query.participantes;
+  let m = req.query.mes;
+  let a = req.query.anio;
+  var reuniones = await Reunion.find({ participantes: p, mes: m, anio: a });
+  res.json(reuniones);
+};
+
+//recupera reuniones a las que fue/es/será ocupada un oficina en determinado mes y año. recibe tres parametros
+reunionCtrl.getReunionesOficinaFiltros = async (req, res) => {
+  let o = req.query.nroOficina;
+  let m = req.query.mes;
+  let a = req.query.anio;
+  var reuniones = await Reunion.find({ nroOficina: o, mes: m, anio: a });
+  res.json(reuniones);
+};
+
+//recupera tipos de reuniones de un determinado mes y año. recibe tres parametros
+reunionCtrl.getReunionesTipoFiltros = async (req, res) => {
+  let t = req.query.tipoReunion;
+  let m = req.query.mes;
+  let a = req.query.anio;
+  var reuniones = await Reunion.find({ tipoReunion: t, mes: m, anio: a });
+  res.json(reuniones);
+};
+
+
+
+
+
+
+
+
+
+
+
+
 module.exports = reunionCtrl;
